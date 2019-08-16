@@ -9,6 +9,7 @@ import com.example.testtask.data.model.EmployeeNetwork
 import com.example.testtask.data.model.SpecialtyNetwork
 import com.example.testtask.domain.model.Employee
 import com.example.testtask.domain.model.Speciality
+import java.text.ParseException
 
 fun Employee.toDBModel(id: Int): EmployeeDB {
 
@@ -41,11 +42,13 @@ fun SpecialtyNetwork.toDomain(): Speciality {
 }
 
 fun EmployeeNetwork.toDomain(): Employee {
-    val specialtyList = this.specialtyNetworkList?.map { it.toDomain() }
+    val specialtyList = this.specialtyNetworkList?.map { it.toDomain() }?:ArrayList()
+    val birthday = try { this.birthday?.fixBirthday() } catch (e:ParseException){"Unparsable date"}?:""
+
     return Employee(
         firstName = this.firstName?.fixName()?:"",
         lastName = this.lastName?.fixName()?:"",
-        birthday = this.birthday?.fixBirthday()?:"",
+        birthday = birthday,
         avatarUrl = this.avatarUrl?:"",
         specialtyList = specialtyList as ArrayList<Speciality>
     )

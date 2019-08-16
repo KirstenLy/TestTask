@@ -16,12 +16,11 @@
 package com.example.testtask.functional
 
 import com.example.sdk.other.Either
-import com.example.testtask.UnitTest
 import org.amshove.kluent.shouldBe
 import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Test
 
-class EitherTest :UnitTest(){
+class EitherTest{
 
     @Test fun `Either Right should return correct type`() {
         val result = Either.Data("testData")
