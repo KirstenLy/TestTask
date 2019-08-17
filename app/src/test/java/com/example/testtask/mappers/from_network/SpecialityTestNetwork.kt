@@ -6,7 +6,7 @@ import com.example.testtask.domain.model.Speciality
 import org.junit.Test
 import kotlin.test.assertNotNull
 
-class SpecialityTest {
+class SpecialityTestNetwork {
 
     @Test fun `SpecialityNetwork to Speciality should map correctly`(){
         var specialityNetwork = SpecialtyNetwork(0,"name")

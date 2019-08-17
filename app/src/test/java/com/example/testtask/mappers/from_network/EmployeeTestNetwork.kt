@@ -7,7 +7,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-class EmployeeTest {
+class EmployeeTestNetwork {
 
     @Test fun `EmployeeNetwork to Employee should map correctly`(){
         var employeeNetwork = EmployeeNetwork("name","lastName","22-12-1992", "avatr_url", emptyList())
