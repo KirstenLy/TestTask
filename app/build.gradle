@@ -26,6 +26,9 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -34,15 +37,16 @@ dependencies {
     implementation project(path: ':sdk')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta02'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta03'
     implementation 'androidx.core:core-ktx:1.2.0-alpha03'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha03'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha03'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
     //Navigation
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
@@ -52,9 +56,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.6.0"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.6.0"
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
 
     // RxAndroid
@@ -68,7 +72,6 @@ dependencies {
     //DI
     implementation 'com.google.dagger:dagger:2.24'
     kapt 'com.google.dagger:dagger-compiler:2.24'
-    kaptAndroidTest 'com.google.dagger:dagger-compiler:2.24'
 
     //Logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
@@ -78,11 +81,10 @@ dependencies {
 
     //Tests
     testImplementation 'junit:junit:4.13-beta-3'
-    testImplementation "org.mockito:mockito-inline:2.8.47"
-    testImplementation 'org.robolectric:robolectric:4.3'
+
     testImplementation 'org.jetbrains.kotlin:kotlin-stdlib:1.3.41'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.3.41'
-    testImplementation "com.nhaarman:mockito-kotlin:1.4.0"
+
+    testImplementation "org.mockito:mockito-inline:3.0.0"
     testImplementation 'org.amshove.kluent:kluent:1.14'
-    testImplementation 'android.arch.core:core-testing:1.1.1'
 }
