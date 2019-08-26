@@ -8,7 +8,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -26,3 +26,94 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+def version = [
+        
+        //Kotlin
+        coroutines            : '1.1.1',
+        core                  : '1.2.0-alpha03',
+        retrofitAdapter       : '0.9.2',
+
+        //Core AndroidX
+        appcompat             : '1.1.0-rc01',
+        cardview              : '1.0.0',
+        recyclerview          : '1.1.0-beta03',
+        legacy                : '1.0.0',
+        lifecycleExtension    : '2.2.0-alpha03',
+        lifecycleVMKotlin     : '2.2.0-alpha03',
+
+        //Navigation
+        navComponent          : '1.0.0',
+
+        //Images
+        glide                 : '4.9.0',
+
+        //Network
+        retrofit              : '2.6.1',
+
+        //RxAndroid
+        rxAndroid             : '2.1.1',
+
+        //Room
+        room                  : '2.1.0-alpha04',
+
+        //Dagger
+        dagger                : '2.24',
+
+        //Logging
+        timber                : '4.7.1',
+
+        //Time
+        joda                  : '2.10.2',
+
+        //Tests
+        jUnit                 : '4.13-beta-3',
+        mockito               : '3.0.0',
+        kluent                : '1.14',
+]
+
+ext.lib = [
+
+        korlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:$ext.kotlin_version",
+        korlinStdLibV7          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$ext.kotlin_version",
+        kotlinUnitTest          : "org.jetbrains.kotlin:kotlin-test-junit:$ext.kotlin_version",
+        kotlinCourutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version.coroutines",
+        kotlinRoomCotoutines    : "androidx.room:room-coroutines:$version.room",
+        kotlinRoomKapt          : "android.arch.persistence.room:compiler:$version.room",
+        kotlinDaggerKapt        : "com.google.dagger:dagger-compiler:$version.dagger",
+        kotlinJunit             : "org.jetbrains.kotlin:kotlin-test-junit:$ext.kotlin_version",
+
+        core                    : "androidx.core:core-ktx:$version.core",
+        appСompat               : "androidx.appcompat:appcompat:$version.appcompat",
+        cardview                : "androidx.cardview:cardview:$version.cardview",
+        recyclerview            : "androidx.recyclerview:recyclerview:$version.recyclerview",
+        legacy                  : "androidx.legacy:legacy-support-v4:$version.legacy",
+
+        lifecycleExtension      : "androidx.lifecycle:lifecycle-extensions:$version.lifecycleExtension",
+        lifecycleVMKotlin       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$version.lifecycleVMKotlin",
+
+        navComponent            : "android.arch.navigation:navigation-fragment:$version.navComponent",
+
+        glide                   : "com.github.bumptech.glide:glide:$version.glide",
+        glideAnnotation         : "com.github.bumptech.glide:compiler:$version.glide",
+
+        retrofit                : "com.squareup.retrofit2:retrofit:$version.retrofit",
+        retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$version.retrofit",
+        retrofitAdapterRxJava   : "com.squareup.retrofit2:adapter-rxjava:$version.retrofit",
+        retrofitAdatperKotlin   : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version.retrofitAdapter",
+
+        rxAndroid               : "io.reactivex.rxjava2:rxandroid:2.1.1",
+
+        room                    : "android.arch.persistence.room:runtime:$version.room",
+
+        dagger                  : "com.google.dagger:dagger:$version.dagger",
+
+        timber                  : "com.jakewharton.timber:timber:$version.timber",
+
+        joda                    : "net.danlew:android.joda:$version.joda",
+
+        jUnit                   : "junit:junit:$version.junit",
+        mockito                 : "org.mockito:mockito-inline:$version.mockito",
+        kluent                  : "org.amshove.kluent:kluent:$version.kluent"
+]

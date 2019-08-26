@@ -36,20 +36,20 @@ fun Speciality.toDBModel(): SpecialtyDB {
 
 fun SpecialtyNetwork.toDomain(): Speciality {
     return Speciality(
-        specialityID = this.specialityID ?: -1,
-        specialityName = this.specialityName ?: ""
+        specialityID = this.specialityID?:-1,
+        specialityName = this.specialityName.orEmpty()
     )
 }
 
 fun EmployeeNetwork.toDomain(): Employee {
     val specialtyList = this.specialtyNetworkList?.map { it.toDomain() }?:ArrayList()
-    val birthday = try { this.birthday?.fixBirthday() } catch (e:ParseException){"Unparsable date"}?:""
+    val birthday = try { this.birthday?.fixBirthday() } catch (e:ParseException){"Unparsable date"}.orEmpty()
 
     return Employee(
-        firstName = this.firstName?.fixName()?:"",
-        lastName = this.lastName?.fixName()?:"",
+        firstName = this.firstName?.fixName().orEmpty(),
+        lastName = this.lastName?.fixName().orEmpty(),
         birthday = birthday,
-        avatarUrl = this.avatarUrl?:"",
+        avatarUrl = this.avatarUrl.orEmpty(),
         specialtyList = specialtyList as ArrayList<Speciality>
     )
 }
@@ -68,8 +68,7 @@ fun EmployeeDB.toDomain(): Employee {
 fun SpecialtyDB.toDomain(): Speciality {
     return Speciality(
         specialityID = this.id,
-        specialityName = this.specialityName
-    )
+        specialityName = this.specialityName)
 }
 
 fun EmployeeDB.getRelationList(): List<SpecialtyRelationDB> {
